@@ -5,7 +5,8 @@ import { useState, useEffect, useRef } from "react";
 const MonthSlider = () => {
   const [months, setMonths] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
-  const [lastValidAngle, setLastValidAngle] = useState(270);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setLastValidAngle] = useState(270);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const calculateHandlePosition = (months: number) => {

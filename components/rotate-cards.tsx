@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 export type RotateCard = {
   name: string;
@@ -101,8 +102,9 @@ export const RotateCards = ({ cards }: { cards: RotateCard[] }) => {
               }}
             >
               <div className="h-full flex flex-col items-center text-white">
-                <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white">
-                  <img
+                <div className="relative w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white">
+                  <Image
+                    layout="fill"
                     src={card.image}
                     alt={card.name}
                     className="w-full h-full object-cover"

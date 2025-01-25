@@ -17,21 +17,26 @@ export const CubeText = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const faces = [
-    { text: "Sharp Design", transform: "rotateY(0) translateZ(48px)" },
-    { text: "Modern UI", transform: "rotateX(90deg) translateZ(48px)" },
-    {
-      text: "For Design Engineers",
-      transform: "rotateX(-90deg) translateZ(48px)",
-    },
-    { text: "Smooth Animation", transform: "rotateX(180deg) translateZ(48px)" },
-  ];
+  const faces = useMemo(() => {
+    return [
+      { text: "Sharp Design", transform: "rotateY(0) translateZ(48px)" },
+      { text: "Modern UI", transform: "rotateX(90deg) translateZ(48px)" },
+      {
+        text: "For Design Engineers",
+        transform: "rotateX(-90deg) translateZ(48px)",
+      },
+      {
+        text: "Smooth Animation",
+        transform: "rotateX(180deg) translateZ(48px)",
+      },
+    ];
+  }, []);
 
   // Calculate the width based on the longest text
   const containerStyle = useMemo(() => {
     const longestText = faces.reduce(
       (max, face) => (face.text.length > max.length ? face.text : max),
-      "",
+      ""
     );
     return {
       width: `${longestText.length * 2}rem`, // Approximate width based on text length
