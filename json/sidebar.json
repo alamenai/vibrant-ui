@@ -1,0 +1,43 @@
+[
+  {
+    "headline": "Get Started",
+    "items": [
+      { "id": 1, "label": "Introduction", "link": "/docs/introduction" },
+      { "id": 2, "label": "Installation", "link": "/docs/installation" }
+    ]
+  },
+  {
+    "headline": "Components",
+    "items": [
+      {
+        "id": 1,
+        "label": "Month Slider",
+        "link": "/docs/components/month-slider",
+        "isNew": true
+      },
+      {
+        "id": 2,
+        "label": "Rotate Cards",
+        "link": "/docs/components/rotate-cards",
+        "isNew": true
+      }
+    ]
+  },
+  {
+    "headline": "Backgrounds",
+    "items": [
+      {
+        "id": 1,
+        "label": "Snow Fall",
+        "link": "/docs/backgrounds/component-1",
+        "comingSoon": true
+      },
+      {
+        "id": 2,
+        "label": "Wavy Fall",
+        "link": "/docs/backgrounds/component-2",
+        "comingSoon": true
+      }
+    ]
+  }
+]
