@@ -13,9 +13,7 @@ type Props = {
 }
 
 export const CodeBlock = ({ source, language = "typescript" }: Props) => {
-  const url = `/api/code?file=${encodeURIComponent(
-    `components/vibrant/${source}`
-  )}`
+  const url = `/api/code?file=${source}`
   const [code, setCode] = useState("")
   const [copied, setCopied] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
