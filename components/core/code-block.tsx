@@ -1,11 +1,12 @@
 "use client"
 
+import { getFileContent } from "@/app/actions/file"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { Check, Copy } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
-import { Button } from "../ui/button"
 
 type Props = {
   source: string
@@ -13,16 +14,29 @@ type Props = {
 }
 
 export const CodeBlock = ({ source, language = "typescript" }: Props) => {
-  const url = `/api/code?file=${source}`
   const [code, setCode] = useState("")
+  const [error, setError] = useState("")
   const [copied, setCopied] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setCode(data.content))
-  }, [url])
+    const fetchCode = async () => {
+      const result = await getFileContent(source)
+
+      if (result.error) {
+        setError(result.error)
+        setCode("")
+        return
+      }
+
+      if (result.content) {
+        setCode(result.content)
+        setError("")
+      }
+    }
+
+    fetchCode()
+  }, [source])
 
   const copyToClipboard = async () => {
     try {
@@ -32,6 +46,10 @@ export const CodeBlock = ({ source, language = "typescript" }: Props) => {
     } catch (err) {
       console.error("Failed to copy text: ", err)
     }
+  }
+
+  if (error) {
+    return <div className="p-4 bg-red-50 text-red-600 rounded-lg">{error}</div>
   }
 
   return (
@@ -51,10 +69,11 @@ export const CodeBlock = ({ source, language = "typescript" }: Props) => {
           <Copy className="w-4 h-4 text-black" />
         )}
       </Button>
+
       <SyntaxHighlighter
         language={language}
         style={oneDark}
-        className={`w-full ${isExpanded ? "h-full" : "h-[480px]"}`}
+        className={cn("w-full", isExpanded ? "h-full" : "h-[480px]")}
       >
         {code}
       </SyntaxHighlighter>
@@ -62,7 +81,7 @@ export const CodeBlock = ({ source, language = "typescript" }: Props) => {
       <div className="absolute bottom-0 left-0 right-4 flex justify-center pb-2">
         <div
           className={cn(
-            `backdrop-blur-sm bg-transparent p-1 w-full h-16 flex items-center justify-center`,
+            "backdrop-blur-sm bg-transparent p-1 w-full h-16 flex items-center justify-center",
             isExpanded && "backdrop-blur-none"
           )}
         >
@@ -71,7 +90,7 @@ export const CodeBlock = ({ source, language = "typescript" }: Props) => {
             className="bg-white hover:bg-gray-100 text-black rounded-full"
             size="sm"
           >
-            {isExpanded ? <>Show Less</> : <>Show All</>}
+            {isExpanded ? "Show Less" : "Show All"}
           </Button>
         </div>
       </div>
