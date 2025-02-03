@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   try {
     // Use path.join to create the correct file path
     const content = await fs.readFile(
-      process.cwd() + `/app/components/vibrant/${fileName}`,
+      process.cwd() + `/components/vibrant/${fileName}`,
       "utf8"
     )
 
