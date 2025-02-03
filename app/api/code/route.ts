@@ -14,23 +14,17 @@ export async function GET(request: Request) {
   }
 
   try {
-    // Use a more specific path resolution
-    const basePath =
-      process.env.NODE_ENV === "production"
-        ? path.join(process.cwd(), ".next/server/app")
-        : process.cwd()
+    // Use path.join to create the correct file path
+    const filePath = path.join(process.cwd(), file)
 
-    const filePath = file.toString().replace("@/", "").replace(/\\/g, "/")
-
-    const fullPath = path.join(basePath, filePath)
-
-    // Add some logging in production
-    console.log("Attempting to read file:", fullPath)
-
-    const content = fs.readFileSync(fullPath, "utf8")
+    const content = fs.readFileSync(filePath, "utf8")
     return NextResponse.json({ content })
   } catch (error) {
-    console.error("File read error:", error)
-    return NextResponse.json({ error: "Failed to read file" }, { status: 500 })
+    console.error("Error reading file:", error)
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+    return NextResponse.json(
+      { error: "Failed to read file", details: errorMessage },
+      { status: 500 }
+    )
   }
 }
