@@ -1,0 +1,65 @@
+import { Badge } from "@/components/ui/badge.tsx"
+import Link from "next/link"
+
+import { Terminal } from "lucide-react"
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+
+<h1 className="font-bold text-3xl"> Installation </h1>
+<h2 className="text-slate-500 mt-1 text-lg">
+  How to install dependencies and structure your components.
+</h2>
+
+<Alert className="my-4">
+  <Terminal className="h-4 w-4" />
+  <AlertTitle className="font-bold">Coming Soon</AlertTitle>
+  <AlertDescription>
+    I'll develop a CLI that lets import the components directly into your
+    project.
+  </AlertDescription>
+</Alert>
+
+<section className="my-4 space-y-4">
+
+<h1 className="font-bold text-xl text-violet-500">
+  How to install dependencies?
+</h1>
+
+<div className="leading-9">
+This project is built with TypeScript, React, Shadcn, TailwindCSS and Framer Motion. The first step you need is to install these depenciedes in your project before copying and pasting the code.
+
+<ol className="list-decimal ml-8 underline">
+  <li>[Install Shadcn](https://ui.shadcn.com/docs/installation)</li>
+  <li>[Install TailwindCSS](https://v3.tailwindcss.com/)</li>
+  <li>[Install Framer Motion](https://motion.dev/)</li>
+</ol>
+
+</div>
+
+<h1 className="font-bold text-xl text-violet-500">
+  How to structure the components?
+</h1>
+
+<div className="leading-9">
+In React projects, there is no strict way to organize your components. It just depends on you and your team on how to decide that, taking into consideration the pros and cons of each one.
+
+However, and due to the rise of ready-to-use component libraries, I have gotten used to structuring them under the `components` folder, and inside it, I organize the components that belong to each brand.
+
+<br />
+
+```ts
+📁 my-poroject
+  📁 components
+    📁 shadcn
+    📁 magic
+    📁 vibrant
+       📄 component-name.tsx
+```
+
+<br />
+
+All you need to do is create a folder called `vibrant`, then create a file with the name of the component you want to use, and just copy & paste the code.
+
+</div>
+
+</section>

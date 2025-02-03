@@ -1,0 +1,44 @@
+import { MonthSlider } from "@/components/vibrant/month-slider.tsx"
+
+import { Badge } from "@/components/ui/badge.tsx"
+import Link from "next/link"
+import { CodeBlock } from "@/components/core/code-block.tsx"
+import { Terminal } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ComponentPreview } from "@/components/core/component-preview.tsx"
+import { ComponentSource } from "@/components/core/component-source.tsx"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+<h1 className="font-bold text-3xl"> Month Slider </h1>
+<h2 className="text-slate-500 mt-1 text-lg">
+  Intuitive component that allows users to seamlessly select and navigate
+  through months using a sliding interface, ideal for calendars, scheduling, and
+  financial tracking.
+</h2>
+
+<Tabs defaultValue="preview" className="mt-8">
+  <TabsList>
+    <TabsTrigger value="preview" className="w-32">
+      Preview
+    </TabsTrigger>
+    <TabsTrigger value="source" className="w-32">
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview" className="pt-2">
+    <ComponentPreview>
+      <MonthSlider />
+    </ComponentPreview>
+  </TabsContent>
+  <TabsContent value="source">
+    <ComponentSource source="month-slider.tsx" />
+  </TabsContent>
+</Tabs>
