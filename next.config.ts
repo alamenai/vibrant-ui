@@ -3,7 +3,6 @@
 import { withContentCollections } from "@content-collections/next"
 import createMDX from "@next/mdx"
 import { NextConfig } from "next"
-
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   images: {

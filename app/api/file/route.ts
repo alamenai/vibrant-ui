@@ -15,7 +15,6 @@ export async function GET(request: NextRequest) {
 
   try {
     const fullPath = path.join(process.cwd(), "components", "vibrant", fileName)
-
     const content = await fs.readFile(fullPath, "utf8")
 
     return NextResponse.json({ content })
