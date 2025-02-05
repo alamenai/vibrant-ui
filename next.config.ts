@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { withContentCollections } from "@content-collections/next";
-import createMDX from "@next/mdx";
-import { NextConfig } from "next";
+import { withContentCollections } from "@content-collections/next"
+import createMDX from "@next/mdx"
+import { NextConfig } from "next"
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   images: {
@@ -24,7 +24,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-};
+
+  outputFileTracingIncludes: {
+    "/api/file/route.ts": ["./components/vibrant/**"],
+  },
+}
 
 const withMDX = createMDX({
   options: {
@@ -40,7 +44,8 @@ const withMDX = createMDX({
       ["rehype-katex", { strict: true, throwOnError: true }],
       ["rehype-slug", { strict: true, throwOnError: true }],
     ],
+    providerImportSource: null,
   },
-});
+})
 
-export default withContentCollections(withMDX(nextConfig));
+export default withContentCollections(withMDX(nextConfig))
