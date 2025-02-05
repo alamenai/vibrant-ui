@@ -1,7 +1,7 @@
 {
-    "functions": {
-      "app/actions/*.ts": {
-        "includeFiles": "components/vibrant/**"
-      }
+  "functions": {
+    "app/api/file/route.ts": {
+      "includeFiles": "components/vibrant/**"
     }
   }
+}
