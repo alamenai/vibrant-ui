@@ -1,0 +1,7 @@
+{
+    "functions": {
+      "app/actions/*.ts": {
+        "includeFiles": "components/vibrant/**"
+      }
+    }
+  }

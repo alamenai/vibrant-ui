@@ -1,36 +1,50 @@
 "use server"
 
+import { getFilePath } from "@/registry/helpers"
+import { fileRegistry } from "@/registry/index"
 import { promises as fs } from "fs"
 import path from "path"
 import { z } from "zod"
 
-// Define the response type
 type CodeResponse = {
   content?: string
   error?: string
   details?: string
 }
 
-// Validation schema
 const fileSchema = z.object({
-  fileName: z.string().min(1),
+  fileName: z
+    .string()
+    .min(1)
+    .refine((fileName) => fileName in fileRegistry, {
+      message: "File not found in registry",
+    }),
 })
 
 export async function getFileContent(fileName: string): Promise<CodeResponse> {
-  // Validate input
   try {
     fileSchema.parse({ fileName })
-  } catch {
+  } catch (error) {
     return {
-      error: "File parameter is required",
+      error:
+        error instanceof z.ZodError
+          ? error.errors[0].message
+          : "File parameter is required",
     }
   }
 
   try {
-    // Use path.join for safe path concatenation
-    const filePath = path.join(process.cwd(), "components", "vibrant", fileName)
+    const filePath = getFilePath(fileName)
+    if (!filePath) {
+      return {
+        error: "File not found in registry",
+      }
+    }
 
-    const content = await fs.readFile(filePath, "utf8")
+    // Use path.join for safe path concatenation
+    const fullPath = path.join(process.cwd(), filePath)
+
+    const content = await fs.readFile(fullPath, "utf8")
 
     return { content }
   } catch (error) {
