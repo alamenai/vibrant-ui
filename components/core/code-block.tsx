@@ -1,6 +1,5 @@
 "use client"
 
-import { getFileContent } from "@/app/actions/file"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { Check, Copy } from "lucide-react"
@@ -21,17 +20,25 @@ export const CodeBlock = ({ source, language = "typescript" }: Props) => {
 
   useEffect(() => {
     const fetchCode = async () => {
-      const result = await getFileContent(source)
+      try {
+        const response = await fetch(
+          `/api/file?fileName=${encodeURIComponent(source)}`
+        )
+        const data = await response.json()
 
-      if (result.error) {
-        setError(result.error)
+        if (!response.ok) {
+          setError(data.error || "Failed to fetch file")
+          setCode("")
+          return
+        }
+
+        if (data.content) {
+          setCode(data.content)
+          setError("")
+        }
+      } catch {
+        setError("Failed to fetch file content")
         setCode("")
-        return
-      }
-
-      if (result.content) {
-        setCode(result.content)
-        setError("")
       }
     }
 
