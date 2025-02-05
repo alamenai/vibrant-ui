@@ -1,0 +1,12 @@
+{
+  "files": {
+    "month-slider.tsx": {
+      "path": "components/vibrant/month-slider.tsx",
+      "type": "component"
+    },
+    "rotate-cards.tsx": {
+      "path": "components/vibrant/rotate-cards.tsx",
+      "type": "component"
+    }
+  }
+}

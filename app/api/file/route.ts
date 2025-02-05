@@ -1,21 +1,10 @@
-import { fileRegistry } from "@/registry"
-import { getFilePath } from "@/registry/helpers"
+// app/api/file/route.ts
+import { getRegistry } from "@/lib/registry"
 import { promises as fs } from "fs"
 import { NextRequest, NextResponse } from "next/server"
 import path from "path"
-import { z } from "zod"
-
-const fileSchema = z.object({
-  fileName: z
-    .string()
-    .min(1)
-    .refine((fileName) => fileName in fileRegistry, {
-      message: "File not found in registry",
-    }),
-})
 
 export async function GET(request: NextRequest) {
-  // Get fileName from search params
   const searchParams = request.nextUrl.searchParams
   const fileName = searchParams.get("fileName")
 
@@ -27,28 +16,17 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    fileSchema.parse({ fileName })
-  } catch (error) {
-    return NextResponse.json(
-      {
-        error:
-          error instanceof z.ZodError
-            ? error.errors[0].message
-            : "Invalid file parameter",
-      },
-      { status: 400 }
-    )
-  }
+    // Get registry and validate file exists
+    const registry = await getRegistry()
 
-  try {
-    const filePath = getFilePath(fileName)
-    if (!filePath) {
+    if (!registry.files[fileName]) {
       return NextResponse.json(
         { error: "File not found in registry" },
         { status: 404 }
       )
     }
 
+    const filePath = registry.files[fileName].path
     const fullPath = path.join(process.cwd(), filePath)
     const content = await fs.readFile(fullPath, "utf8")
 
