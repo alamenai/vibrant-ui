@@ -4,7 +4,7 @@ import path from "path"
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
-  const fileName = searchParams.get("fileName")
+  const fileName = searchParams.get("name")
 
   if (!fileName) {
     return NextResponse.json(
@@ -15,6 +15,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const fullPath = path.join(process.cwd(), "components", "vibrant", fileName)
+
     const content = await fs.readFile(fullPath, "utf8")
 
     return NextResponse.json({ content })

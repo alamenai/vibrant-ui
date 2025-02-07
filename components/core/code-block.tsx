@@ -22,7 +22,7 @@ export const CodeBlock = ({ source, language = "typescript" }: Props) => {
     const fetchCode = async () => {
       try {
         const response = await fetch(
-          `/api/file?fileName=${encodeURIComponent(source)}`
+          `/api/file?name=${encodeURIComponent(source)}`
         )
         const data = await response.json()
 
