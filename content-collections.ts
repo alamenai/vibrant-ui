@@ -12,8 +12,11 @@ const docs = defineCollection({
   directory: "docs",
   include: "*.mdx",
   exclude: "components/**/*.mdx", // Exclude files already handled by the components collection
-  parser: "frontmatter",
-  schema: () => ({}),
+  parser: "frontmatter-only",
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+  }),
   transform: ({ _meta, ...post }) => {
     const mdx = createDefaultImport<MDXContent>(`@/docs/${_meta.filePath}`)
     return {
@@ -29,8 +32,11 @@ const components = defineCollection({
   name: "components",
   directory: "docs/components",
   include: "*.mdx",
-  parser: "frontmatter",
-  schema: () => ({}),
+  parser: "frontmatter-only",
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+  }),
   transform: ({ _meta, ...post }) => {
     const mdx = createDefaultImport<MDXContent>(
       `@/docs/components/${_meta.filePath}`

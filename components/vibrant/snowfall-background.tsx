@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type Snowflake = {
   id: number;
@@ -50,7 +50,7 @@ export const SnowfallBackground = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-neutral-950 overflow-hidden">
+    <div className="rounded-md w-full h-screen bg-neutral-950 overflow-hidden z-50">
       {snowflakes.map((flake) => (
         <div
           key={flake.id}

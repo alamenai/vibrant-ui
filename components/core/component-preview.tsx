@@ -9,8 +9,10 @@ type Props = {
 
 export const ComponentPreview = ({ children }: Props) => {
   return (
-    <Card className="w-full h-full flex items-center justify-center">
-      <CardContent className="flex p-8">{children}</CardContent>
+    <Card className="w-full h-fit p-8">
+      <CardContent className="flex p-0 relative w-full items-center justify-center">
+        {children}
+      </CardContent>
     </Card>
   )
 }

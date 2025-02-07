@@ -5,10 +5,9 @@ import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card"
 import { MonthSlider } from "@/components/vibrant/month-slider"
 import { Hero } from "@/layouts/hero"
@@ -25,7 +24,6 @@ const Page = () => {
           <Badge className="absolute right-4 bg-rose-500 hover:bg-rose-600">
             New
           </Badge>
-          <CardDescription></CardDescription>
         </CardHeader>
         <CardContent>
           <MonthSlider />

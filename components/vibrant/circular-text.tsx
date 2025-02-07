@@ -1,34 +1,34 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { HTMLProps } from "react";
+import { cn } from "@/lib/utils"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { HTMLProps } from "react"
 
 type CircularTextProps = Partial<HTMLProps<HTMLParagraphElement>> & {
-  text?: string;
-  radius?: number;
-};
+  text?: string
+  radius?: number
+}
 
 export const CircularText = ({
   text,
   className,
   radius = 120, // Default larger radius
 }: CircularTextProps) => {
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll()
 
   // Default text content
-  const defaultText = "CIRCULAR TEXT ANIMATION EXAMPLE ";
+  const defaultText = "CIRCULAR TEXT ANIMATION EXAMPLE "
 
   // Transform scrollYProgress to rotation
   const rotate = useTransform(
     scrollYProgress,
     [0, 1],
     [0, 360] // Rotate full circle based on scroll
-  );
+  )
 
   // Calculate SVG dimensions based on radius
-  const size = radius * 2;
-  const viewBoxSize = size + 128; // Text layout padding
+  const size = radius * 2
+  const viewBoxSize = size + 128 // Text layout padding
 
   return (
     <div className="relative" style={{ width: size, height: size }}>
@@ -65,5 +65,5 @@ export const CircularText = ({
         </svg>
       </motion.div>
     </div>
-  );
-};
+  )
+}

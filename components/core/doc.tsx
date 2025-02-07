@@ -2,6 +2,7 @@
 
 import { allDocs } from "@/.content-collections/generated"
 import { notFound, useParams } from "next/navigation"
+import { DocHeader } from "./doc-header"
 
 export const Doc = () => {
   const params = useParams()
@@ -14,9 +15,11 @@ export const Doc = () => {
     return notFound() // This will trigger the not-found page
   }
 
+  const MdxContent = post.mdx
   return (
     <article>
-      <post.mdx />
+      <DocHeader post={post} />
+      <MdxContent />
     </article>
   )
 }

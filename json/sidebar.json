@@ -28,22 +28,5 @@
         "isNew": true
       }
     ]
-  },
-  {
-    "headline": "Backgrounds",
-    "items": [
-      {
-        "id": 1,
-        "label": "Snow Fall",
-        "link": "/docs/backgrounds/snow-fall",
-        "isNew": true
-      },
-      {
-        "id": 2,
-        "label": "Wavy Fall",
-        "link": "/docs/backgrounds/component-2",
-        "comingSoon": true
-      }
-    ]
   }
 ]
