@@ -20,6 +20,12 @@
         "label": "Rotate Cards",
         "link": "/docs/components/rotate-cards",
         "isNew": true
+      },
+      {
+        "id": 3,
+        "label": "Wavy Text",
+        "link": "/docs/components/wavy-text",
+        "isNew": true
       }
     ]
   },
@@ -29,8 +35,8 @@
       {
         "id": 1,
         "label": "Snow Fall",
-        "link": "/docs/backgrounds/component-1",
-        "comingSoon": true
+        "link": "/docs/backgrounds/snow-fall",
+        "isNew": true
       },
       {
         "id": 2,
