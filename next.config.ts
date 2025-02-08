@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
     ],
   },
   outputFileTracingIncludes: {
-    "/api/file/route.ts": ["./components/vibrant/**"],
+    "/api/file/route.ts": ["./components/vibrant/*"],
   },
 }
 
