@@ -20,12 +20,6 @@
         "label": "Rotate Cards",
         "link": "/docs/components/rotate-cards",
         "isNew": true
-      },
-      {
-        "id": 3,
-        "label": "Wavy Text",
-        "link": "/docs/components/wavy-text",
-        "isNew": true
       }
     ]
   }
