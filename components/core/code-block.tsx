@@ -1,29 +1,39 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { Check, Copy } from "lucide-react"
-import { useEffect, useState } from "react"
+import { Bug, Check, Copy } from "lucide-react"
+import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { Button } from "../ui/button"
 
 type Props = {
   source: string
   language?: string
+  expanded?: boolean
 }
 
-export const CodeBlock = ({ source, language = "typescript" }: Props) => {
+interface CustomSyntaxHighliter extends SyntaxHighlighter {
+  scrollTop: number
+}
+
+export const CodeBlock = ({
+  source,
+  language = "typescript",
+  expanded = false,
+}: Props) => {
   const [code, setCode] = useState("")
-  const [error, setError] = useState("")
   const [copied, setCopied] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
+  const highlighterRef = useRef<CustomSyntaxHighliter>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchCode = async () => {
       try {
-        const response = await fetch(
-          `/api/file?name=${encodeURIComponent(source)}`
-        )
+        const api = `/api/file?name=${encodeURIComponent(source)}`
+        const response = await fetch(api)
         const data = await response.json()
 
         if (!response.ok) {
@@ -55,41 +65,79 @@ export const CodeBlock = ({ source, language = "typescript" }: Props) => {
     }
   }
 
+  useEffect(() => {
+    if (!isExpanded) {
+      if (highlighterRef.current) {
+        highlighterRef.current.scrollTop = 0
+      }
+    }
+  }, [isExpanded])
+
   if (error) {
     return <div className="p-4 bg-red-50 text-red-600 rounded-lg">{error}</div>
   }
 
   return (
-    <div className="relative w-full">
-      <Button
-        size="icon"
-        onClick={copyToClipboard}
+    <div className="flex flex-col relative w-full">
+      <div
         className={cn(
-          "absolute top-4 right-6 p-2 bg-white hover:bg-gray-100 transition-colors rounded-full",
-          isExpanded && "right-2"
+          "flex items-center gap-2 absolute top-4 right-2",
+          !expanded && isExpanded && "right-6",
         )}
-        aria-label="Copy code"
       >
-        {copied ? (
-          <Check className="w-4 h-4 text-green-500" />
-        ) : (
-          <Copy className="w-4 h-4 text-black" />
-        )}
-      </Button>
+        <Link
+          href="https://github.com/alamenai/vibrant-ui/issues"
+          target="_blank"
+        >
+          <Button
+            size="icon"
+            onClick={copyToClipboard}
+            className={cn(
+              "ap-2 bg-white hover:bg-gray-100 transition-colors rounded-full",
+            )}
+            aria-label="Copy code"
+          >
+            <Bug className="w-4 h-4 text-rose-500" />
+          </Button>
+        </Link>
+
+        <Button
+          size="icon"
+          onClick={copyToClipboard}
+          className={cn(
+            "p-2 bg-white hover:bg-gray-100 transition-colors rounded-full",
+          )}
+          aria-label="Copy code"
+        >
+          {copied ? (
+            <Check className="w-4 h-4 text-green-500" />
+          ) : (
+            <Copy className="w-4 h-4 text-black" />
+          )}
+        </Button>
+      </div>
 
       <SyntaxHighlighter
+        ref={highlighterRef}
         language={language}
         style={oneDark}
-        className={cn("w-full", isExpanded ? "h-full" : "h-[480px]")}
+        className={cn(
+          "rounded-md",
+          expanded
+            ? "h-full min-h-48"
+            : isExpanded
+              ? "h-[680px]"
+              : "!overflow-hidden h-[480px]",
+        )}
       >
         {code}
       </SyntaxHighlighter>
 
-      <div className="absolute bottom-0 left-0 right-4 flex justify-center pb-2">
+      {!expanded && (
         <div
           className={cn(
-            "backdrop-blur-sm bg-transparent p-1 w-full h-16 flex items-center justify-center",
-            isExpanded && "backdrop-blur-none"
+            `absolute right-0 top-2 bottom-4 left-0 w-full h-full backdrop-blur-sm bg-black/20 flex items-center justify-center rounded-md`,
+            isExpanded && "backdrop-blur-none bottom-10 h-0 top-auto",
           )}
         >
           <Button
@@ -97,10 +145,10 @@ export const CodeBlock = ({ source, language = "typescript" }: Props) => {
             className="bg-white hover:bg-gray-100 text-black rounded-full"
             size="sm"
           >
-            {isExpanded ? "Show Less" : "Show All"}
+            {isExpanded ? <>Hide Code</> : <>Show Code</>}
           </Button>
         </div>
-      </div>
+      )}
     </div>
   )
 }
