@@ -8,7 +8,7 @@ export const Hero = () => {
   return (
     <div className="mt-8 flex flex-col items-center">
       <Badge className="bg-rose-500 hover:bg-rose-500 text-sm">
-        Built for design engineers
+        Built for Design Engineers
       </Badge>
       <WavyText text="Create Vibrant User Interfaces" />
       <p className="text-2xl max-w-2xl text-center">
