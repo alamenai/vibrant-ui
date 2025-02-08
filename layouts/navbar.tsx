@@ -12,7 +12,7 @@ export const Navbar = () => {
   }
 
   return (
-    <nav className="flex items-center gap-4 px-8 w-full justify-start">
+    <nav className="flex items-center gap-4 px-8 justify-items-stretch relative flex-1">
       <Link
         href="/docs/introduction"
         className={`${
@@ -45,7 +45,7 @@ export const Navbar = () => {
       <Link
         href="https://github.com/alamenai/vibrant-ui/issues"
         target="_blank"
-        className="ml-auto"
+        className="absolute right-0"
       >
         <Button>Feedback</Button>
       </Link>
