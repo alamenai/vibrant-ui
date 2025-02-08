@@ -1,6 +1,6 @@
+import WavyText from "@/components/core/landing/wavy-text"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import WavyText from "@/components/vibrant/wavy-text"
 import { Github } from "lucide-react"
 import Link from "next/link"
 
@@ -12,7 +12,7 @@ export const Hero = () => {
       </Badge>
       <WavyText text="Create Vibrant User Interfaces" />
       <p className="text-2xl max-w-2xl text-center">
-        Modern, animated, and ready-to-use components to make your interfaces
+        Modern, animated, and interactive components to make your interfaces
         vibrant and visually stunning.
       </p>
       <div className="flex gap-2">
