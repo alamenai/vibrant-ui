@@ -43,6 +43,13 @@ export const Navbar = () => {
         </span>
       </Link>
       <Link
+        href="https://github.com/users/alamenai/projects/11"
+        target="_blank"
+        className="text-gray-500 hover:text-gray-900"
+      >
+        <span className="flex  relative items-center self-end">Roadmap</span>
+      </Link>
+      <Link
         href="https://github.com/alamenai/vibrant-ui/issues"
         target="_blank"
         className="absolute right-0"
