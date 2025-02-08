@@ -9,12 +9,12 @@ export async function GET(request: NextRequest) {
   if (!fileName) {
     return NextResponse.json(
       { error: "File parameter is required" },
-      { status: 400 }
+      { status: 400 },
     )
   }
 
   try {
-    const fullPath = path.join(process.cwd(), "components", "vibrant", fileName)
+    const fullPath = path.join(process.cwd(), fileName)
 
     const content = await fs.readFile(fullPath, "utf8")
 
@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
         error: "Failed to read file",
         details: errorMessage,
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }
