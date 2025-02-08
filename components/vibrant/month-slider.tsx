@@ -2,7 +2,19 @@
 
 import { useEffect, useRef, useState } from "react"
 
-export const MonthSlider = () => {
+import tailwindColors from "tailwindcss/colors"
+
+type ColorScheme = keyof typeof tailwindColors
+
+type MonthSliderProps = {
+  colorScheme?: ColorScheme
+}
+
+const defaultColor = "violet"
+
+export const MonthSlider = ({
+  colorScheme = defaultColor,
+}: MonthSliderProps) => {
   const [months, setMonths] = useState(1)
   const [isDragging, setIsDragging] = useState(false)
 
@@ -10,6 +22,8 @@ export const MonthSlider = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setLastValidAngle] = useState(270) // Starting at top (270 degrees)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  const color = tailwindColors[colorScheme as ColorScheme]
 
   const calculateHandlePosition = (months: number) => {
     const angle = ((months / 12) * 360 - 90) * (Math.PI / 180)
@@ -99,9 +113,9 @@ export const MonthSlider = () => {
         className="absolute inset-0 rounded-full animate-gradient"
         style={{
           background: `conic-gradient(from 0deg, 
-              rgb(139, 92, 246) 0%, /* violet-500 */
-              rgb(124, 58, 237) ${(months / 12) * 50}%, /* violet-600 */
-              rgb(109, 40, 217) ${(months / 12) * 100}%, /* violet-700 */
+              ${color[500]} 0%,
+              ${color[600]} ${(months / 12) * 50}%,
+              ${color[700]} ${(months / 12) * 100}%,
               transparent ${(months / 12) * 100}%, 
               transparent 100%)`,
         }}
@@ -147,8 +161,14 @@ export const MonthSlider = () => {
         }}
         onMouseDown={handleMouseDown}
       >
-        <div className="w-full h-full bg-violet-400 rounded-full shadow-2xl flex items-center justify-center">
-          <div className="w-12 h-12 bg-violet-700 rounded-full"></div>
+        <div
+          className="w-full h-full rounded-full shadow-lg flex items-center justify-center"
+          style={{ backgroundColor: color[400] }}
+        >
+          <div
+            className="w-12 h-12 rounded-full"
+            style={{ backgroundColor: color[700] }}
+          ></div>
         </div>
       </button>
     </div>
