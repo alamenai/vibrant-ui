@@ -6,6 +6,8 @@ import { PackageOpen } from "lucide-react"
 import Image from "next/image"
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react"
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 const SWIPE_THRESHOLD = 180
 
 export type SwipeCardStyle = {
@@ -86,21 +88,21 @@ export const SwipeCards = ({
     setTimeout(() => setIsImageNavigation(false), 100)
   }
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setIsDragging(true)
     setStartX(e.touches[0].clientX - offsetX)
     setDragDistance(0)
     setDragStartTime(Date.now())
   }
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsDragging(true)
     setStartX(e.clientX - offsetX)
     setDragDistance(0)
     setDragStartTime(Date.now())
   }
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging) return
     const currentX = e.touches[0].clientX
     const newOffset = currentX - startX
@@ -109,7 +111,7 @@ export const SwipeCards = ({
     setDragDistance(Math.abs(newOffset))
   }
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging) return
     const currentX = e.clientX
     const newOffset = currentX - startX
@@ -144,7 +146,7 @@ export const SwipeCards = ({
   ])
 
   useEffect(() => {
-    const handleEnd = (e) => {
+    const handleEnd = (e: MouseEvent | TouchEvent) => {
       if (isDragging) {
         e.preventDefault()
         memoizedDragEnd()
