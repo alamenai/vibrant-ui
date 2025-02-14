@@ -10,31 +10,30 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from "react"
 
 const SWIPE_THRESHOLD = 180
 
-export type SwipeCardStyle = {
-  width: number
-  height: number
-}
-
 type ImageClip = {
   url: string
   alt: string
 }
 
-export type SwipeCardsProps = {
+export type SwipeCardStyle = {
+  width: number
+  height: number
+}
+
+export type SwipeCards = {
   id: number
   content?: ReactNode
   images: ImageClip[]
 }
 
+export type SwipeCardsProps = {
+  cards: SwipeCards[]
+  style?: SwipeCardStyle
+}
+
 type Direction = "left" | "right"
 
-export const SwipeCards = ({
-  cards,
-  style,
-}: {
-  cards: SwipeCardsProps[]
-  style?: SwipeCardStyle
-}) => {
+export const SwipeCards = ({ cards, style }: SwipeCardsProps) => {
   const [tempCards, setTempCards] = useState(cards)
   const [currentImageIndices, setCurrentImageIndices] = useState<
     Record<number, number>
