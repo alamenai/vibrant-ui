@@ -29,11 +29,16 @@ export type SwipeCards = {
 export type SwipeCardsProps = {
   cards: SwipeCards[]
   style?: SwipeCardStyle
+  animationHint?: boolean
 }
 
 type Direction = "left" | "right"
 
-export const SwipeCards = ({ cards, style }: SwipeCardsProps) => {
+export const SwipeCards = ({
+  cards,
+  style,
+  animationHint,
+}: SwipeCardsProps) => {
   const [tempCards, setTempCards] = useState(cards)
   const [currentImageIndices, setCurrentImageIndices] = useState<
     Record<number, number>
@@ -166,7 +171,8 @@ export const SwipeCards = ({ cards, style }: SwipeCardsProps) => {
     <div className="flex flex-col items-center justify-center bg-gray-50 rounded-2xl select-none">
       <div
         className={cn(
-          "flex flex-col items-center justify-center relative w-80 h-96"
+          "flex flex-col items-center justify-center relative w-80 h-96",
+          animationHint && "animate-swipeHintBoth"
         )}
         style={{ width: style?.width }}
       >

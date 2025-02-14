@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 export default {
   darkMode: ["class"],
@@ -59,8 +59,20 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      keyframes: {
+        swipeHintBoth: {
+          '0%, 15%': { transform: 'translateX(0) rotate(0deg)' },   // Start with a pause
+          '25%, 35%': { transform: 'translateX(60px) rotate(6deg)' }, // Hold at right position
+          '45%, 55%': { transform: 'translateX(0) rotate(0deg)' },    // Hold at center
+          '65%, 75%': { transform: 'translateX(-60px) rotate(-6deg)' }, // Hold at left position
+          '85%, 100%': { transform: 'translateX(0) rotate(0deg)' }     // End with a pause
+        },
+      },
+      animation: {
+        swipeHintBoth: "swipeHintBoth 2s ease-in-out",
+      },
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+} satisfies Config

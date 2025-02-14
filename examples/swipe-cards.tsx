@@ -1,6 +1,6 @@
-import { SwipeCards, SwipeCardsProps } from "@/components/vibrant/swipe-cards"
+import { SwipeCards } from "@/components/vibrant/swipe-cards"
 
-const cards: SwipeCardsProps[] = [
+const cards: SwipeCards[] = [
   {
     id: 1,
     images: [
@@ -18,5 +18,5 @@ const cards: SwipeCardsProps[] = [
   },
 ]
 export const SwipeCardsExample = () => {
-  return <SwipeCards cards={cards} />
+  return <SwipeCards cards={cards} animationHint={true} />
 }
