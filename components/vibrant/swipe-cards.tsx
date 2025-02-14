@@ -139,11 +139,7 @@ export const SwipeCards = ({
     }
   }
 
-  const memoizedDragEnd = useCallback(handleDragEnd, [
-    isDragging,
-    offsetX,
-    SWIPE_THRESHOLD,
-  ])
+  const memoizedDragEnd = useCallback(handleDragEnd, [isDragging, offsetX])
 
   useEffect(() => {
     const handleEnd = (e: MouseEvent | TouchEvent) => {
