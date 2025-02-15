@@ -174,7 +174,7 @@ export const SwipeCards = ({
           "flex flex-col items-center justify-center relative w-80 h-96",
           animationHint && "animate-swipeHintBoth"
         )}
-        style={{ width: style?.width }}
+        style={{ width: style?.width, height: style?.height }}
       >
         {[...tempCards].reverse().map((card, reversedIndex) => {
           const index = tempCards.length - reversedIndex - 1
