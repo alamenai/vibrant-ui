@@ -5,8 +5,8 @@ const cards: SwipeCards[] = [
     id: 1,
     images: [
       { url: "/swipe-card-1.jpg", alt: "First image" },
-      { url: "/swipe-card-2.jpg", alt: "First image" },
-      { url: "/swipe-card-3.jpg", alt: "First image" },
+      { url: "/swipe-card-2.jpg", alt: "Second image" },
+      { url: "/swipe-card-3.jpg", alt: "Third image" },
     ],
   },
   {
