@@ -61,11 +61,21 @@ export default {
       },
       keyframes: {
         swipeHintBoth: {
-          '0%, 15%': { transform: 'translateX(0) rotate(0deg)' },   // Start with a pause
-          '25%, 35%': { transform: 'translateX(60px) rotate(6deg)' }, // Hold at right position
-          '45%, 55%': { transform: 'translateX(0) rotate(0deg)' },    // Hold at center
-          '65%, 75%': { transform: 'translateX(-60px) rotate(-6deg)' }, // Hold at left position
-          '85%, 100%': { transform: 'translateX(0) rotate(0deg)' }     // End with a pause
+          "0%, 15%": { transform: "translateX(0) rotate(0deg)" }, // Start with a pause
+          "25%, 35%": { transform: "translateX(60px) rotate(6deg)" }, // Hold at right position
+          "45%, 55%": { transform: "translateX(0) rotate(0deg)" }, // Hold at center
+          "65%, 75%": { transform: "translateX(-60px) rotate(-6deg)" }, // Hold at left position
+          "85%, 100%": { transform: "translateX(0) rotate(0deg)" }, // End with a pause
+        },
+        borderFlow: {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "100% 50%",
+          },
         },
       },
       animation: {
