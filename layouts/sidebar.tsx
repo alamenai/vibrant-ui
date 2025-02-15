@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge"
 import data from "@/json/sidebar.json"
+import { FlaskConical } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -11,6 +12,7 @@ type SidebarItem = {
   link: string
   isNew?: boolean
   comingSoon?: boolean
+  isExperimental?: boolean
 }
 
 type SideBarData = {
@@ -33,6 +35,7 @@ const Sidebar = () => {
               const isActive = router === item.link // Check if the link is active
               const isNew = item?.isNew // Check if the item is new
               const isComingSoon = item?.comingSoon // Check if the item is coming soon
+              const isExperimental = item?.isExperimental // Check if the item is coming soon
 
               return (
                 <li key={item.id}>
@@ -49,16 +52,17 @@ const Sidebar = () => {
                   >
                     <span className="w-full flex justify-between pr-8">
                       {item.label}
-                      {isNew && ( // Add badge if the item is new
+                      {isNew && (
                         <Badge className="bg-rose-500 hover:bg-rose-500 cursor-default">
                           New
                         </Badge>
                       )}
-                      {isComingSoon && ( // Add badge if the item is new
+                      {isComingSoon && (
                         <Badge className="bg-violet-500 hover:bg-viole-500 cursor-default">
-                          soon
+                          Soon
                         </Badge>
                       )}
+                      {isExperimental && <FlaskConical size={16} className="text-violet-600" />}
                     </span>
                   </Link>
                 </li>

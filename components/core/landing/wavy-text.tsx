@@ -68,7 +68,7 @@ export const WavyText = ({
 
   return (
     <motion.div
-      className="flex overflow-hidden text-6xl font-bold text-neutral-800 cursor-pointer p-4"
+      className="flex overflow-hidden text-7xl font-black text-neutral-800 cursor-pointer p-4"
       variants={container}
       initial="hidden"
       animate="visible"

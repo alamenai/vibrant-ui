@@ -1,19 +1,24 @@
 import WavyText from "@/components/core/landing/wavy-text"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github } from "lucide-react"
+import { ArrowRight, FlaskConical, Github } from "lucide-react"
 import Link from "next/link"
 
 export const Hero = () => {
   return (
     <div className="mt-8 flex flex-col items-center">
-      <Badge className="bg-rose-500 hover:bg-rose-500 text-sm">
-        Built for Design Engineers
-      </Badge>
-      <WavyText text="Create Vibrant User Interfaces" />
-      <p className="text-2xl max-w-2xl text-center">
-        Modern, animated, and interactive components to make your interfaces
-        vibrant and visually stunning.
+      <Link
+        href={"/docs/components/swipe-cards"}
+        className="relative p-[2px] rounded-full bg-gradient-to-r from-violet-600 via-purple-500 to-rose-500 animate-[borderFlow_3s_linear_infinite]"
+      >
+        <div className="flex items-center rounded-full px-3 py-1 text-xs font-bold text-white">
+          <FlaskConical size={18} className="mr-2" />
+          Introducing Swipe Cards
+          <ArrowRight className="ml-2" size={16} />
+        </div>
+      </Link>
+      <WavyText text="More Interactive." />
+      <p className="text-xl max-w-2xl text-center">
+        Modern, animated, and interactive components built for design engineers.
       </p>
       <div className="flex gap-2">
         <Link href="/docs/components/month-slider">

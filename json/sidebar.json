@@ -22,10 +22,10 @@
         "isNew": true
       },
       {
-        "id": 2,
-        "label": "Swiper",
-        "link": "/docs/components/swiper",
-        "comingSoon": true
+        "id": 3,
+        "label": "Swipe Cards",
+        "link": "/docs/components/swipe-cards",
+        "isExperimental": true
       }
     ]
   }
