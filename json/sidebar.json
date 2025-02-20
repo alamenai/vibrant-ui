@@ -26,6 +26,12 @@
         "label": "Swipe Cards",
         "link": "/docs/components/swipe-cards",
         "isExperimental": true
+      },
+      {
+        "id": 4,
+        "label": "Action Button",
+        "link": "/docs/components/action-button",
+        "isExperimental": true
       }
     ]
   }
