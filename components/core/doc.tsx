@@ -8,17 +8,17 @@ export const Doc = () => {
   const params = useParams()
 
   // Find the component based on the slug from the URL
-  const post = allDocs.find((post) => post._meta.path === params.slug)
+  const doc = allDocs.find((post) => post._meta.path === params.slug)
 
   // Handle case where component is not found
-  if (!post) {
+  if (!doc) {
     return notFound() // This will trigger the not-found page
   }
 
-  const MdxContent = post.mdx
+  const MdxContent = doc.mdx
   return (
     <article>
-      <DocHeader post={post} />
+      <DocHeader doc={doc} />
       <MdxContent />
     </article>
   )
