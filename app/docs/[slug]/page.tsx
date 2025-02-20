@@ -10,9 +10,9 @@ export type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = allDocs.find((post) => post._meta.path === slug)
+  const doc = allDocs.find((post) => post._meta.path === slug)
 
-  if (!post) {
+  if (!doc) {
     return {
       title: "Not Found | Vibrant UI",
       description: "The requested page could not be found.",
@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.title} | Vibrant UI`,
-    description: post.description,
+    title: `${doc.title} | Vibrant UI`,
+    description: doc.description,
   }
 }
 
