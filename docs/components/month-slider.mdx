@@ -7,7 +7,7 @@ description:
 ---
 
 import { MonthSliderExample } from "@/examples/month-slider.tsx"
-
+import { MonthSliderColors } from "@/components/core/month-slider-colors.tsx"
 import { Badge } from "@/components/ui/badge.tsx"
 import Link from "next/link"
 import { Terminal } from "lucide-react"
@@ -45,6 +45,7 @@ import {
   </TabsList>
   <TabsContent value="preview" className="pt-2">
     <ComponentPreview>
+      <MonthSliderColors />
       <MonthSliderExample />
     </ComponentPreview>
   </TabsContent>

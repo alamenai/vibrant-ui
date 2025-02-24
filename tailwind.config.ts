@@ -9,6 +9,7 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./docs/*.mdx",
     "./docs/components/*mdx",
+    "./examples/*.tsx",
   ],
   theme: {
     extend: {
