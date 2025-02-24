@@ -140,7 +140,7 @@ export const MonthSlider = ({
           <div
             key={index}
             className={`absolute w-1 h-1 rounded-full ${
-              index + 1 <= months ? "bg-rose-500" : "bg-gray-200"
+              index + 1 <= months ? "bg-white" : "bg-gray-200"
             }`}
             style={{
               left: `${x}px`,

@@ -3,8 +3,10 @@ import { Footer } from "@/layouts/footer"
 import { Header } from "@/layouts/header"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
 import "prismjs/themes/prism-tomorrow.css"
 import "./globals.css"
+
 // Or any other theme you prefer
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +36,9 @@ export default function RootLayout({
       >
         <Banner />
         <Header />
-        <main>{children}</main>
+        <NuqsAdapter>
+          <main>{children}</main>
+        </NuqsAdapter>
         <Footer />
       </body>
     </html>
