@@ -3,7 +3,8 @@
     "headline": "Get Started",
     "items": [
       { "id": 1, "label": "Introduction", "link": "/docs/introduction" },
-      { "id": 2, "label": "Installation", "link": "/docs/installation" }
+      { "id": 2, "label": "Installation", "link": "/docs/installation" },
+      { "id": 3, "label": "Contribution", "link": "/docs/contribution" }
     ]
   },
   {

@@ -1,0 +1,94 @@
+---
+title: "Component Name"
+description: "Intuitive component that do something. Ideal for something."
+---
+
+import { Badge } from "@/components/ui/badge.tsx"
+import Link from "next/link"
+import { Terminal } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ComponentPreview } from "@/components/core/component-preview.tsx"
+import { ComponentSource } from "@/components/core/component-source.tsx"
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+<Tabs defaultValue="preview" className="mt-8">
+  <TabsList>
+    <TabsTrigger value="preview" className="w-32">
+      Preview
+    </TabsTrigger>
+    <TabsTrigger value="source" className="w-32">
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview" className="pt-2">
+    <ComponentPreview>{/**ComponentExample*/}</ComponentPreview>
+  </TabsContent>
+  <TabsContent value="source">
+    <ComponentSource source="/examples/action-button.tsx" expanded />
+  </TabsContent>
+</Tabs>
+
+<h3 className="text-xl font-semibold mt-8 mb-4">Installation</h3>
+
+---
+
+<h4 className="text-base font-semibold mt-4 mb-6">
+  Copy and paste the following code into your project.
+</h4>
+
+<ComponentSource source="/components/vibrant/action-button.tsx" />
+
+<h3 className="text-xl font-semibold mt-8 mb-4">Props</h3>
+
+---
+
+<div className="rounded-md border mt-8">
+  <Table>
+    <TableHeader className="text-base divide-x">
+      <TableRow>
+        <TableHead className="w-[100px]">Prop</TableHead>
+        <TableHead className="border-l">Type</TableHead>
+        <TableHead className="border-l">Required</TableHead>
+        <TableHead className="border-l">Default</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody className="divide-x">
+      <TableRow>
+        <TableCell>
+          <Badge className="bg-gray-100 text-black shadow-none hover:bg-gray-100">
+            prop
+          </Badge>
+        </TableCell>
+        <TableCell className="border-l">type</TableCell>
+        <TableCell className="border-l">
+          <Badge className="bg-gray-100 text-black shadow-none hover:bg-gray-100">
+            No/Yes
+          </Badge>
+        </TableCell>
+        <TableCell className="border-l">
+          <Badge className="bg-gray-100 text-black shadow-none hover:bg-gray-100">
+            Default
+          </Badge>
+        </TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</div>
