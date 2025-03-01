@@ -32,6 +32,12 @@
         "label": "Action Button",
         "link": "/docs/components/action-button",
         "isExperimental": true
+      },
+      {
+        "id": 5,
+        "label": "Ruler",
+        "link": "/docs/components/ruler",
+        "isExperimental": true
       }
     ]
   }
