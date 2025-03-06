@@ -29,9 +29,15 @@
         "isExperimental": true
       },
       {
-        "id": 5,
+        "id": 4,
         "label": "Ruler",
         "link": "/docs/components/ruler",
+        "isExperimental": true
+      },
+      {
+        "id": 5,
+        "label": "Compass",
+        "link": "/docs/components/compass",
         "isExperimental": true
       }
     ]
