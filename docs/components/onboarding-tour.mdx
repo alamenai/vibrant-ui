@@ -1,0 +1,61 @@
+---
+title: "Onboarding Tour"
+description: "Intuitive component that provides a guided tour of your application, helping users understand its features and functionality."
+---
+
+import { OnboardingTourDemo } from "@/examples/onboarding-tour.tsx"
+import { MonthSliderColors } from "@/components/core/month-slider-colors.tsx"
+import { Badge } from "@/components/ui/badge.tsx"
+import Link from "next/link"
+import { Terminal } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ComponentPreview } from "@/components/core/component-preview.tsx"
+import { ComponentSource } from "@/components/core/component-source.tsx"
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+<Tabs defaultValue="preview" className="mt-8">
+  <TabsList>
+    <TabsTrigger value="preview" className="w-32">
+      Preview
+    </TabsTrigger>
+    <TabsTrigger value="source" className="w-32">
+      Code
+    </TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview" className="pt-2">
+    <ComponentPreview>
+      <OnboardingTourDemo/>
+    </ComponentPreview>
+  </TabsContent>
+  <TabsContent value="source">
+    <ComponentSource source="/examples/onboarding-tour.tsx" expanded />
+  </TabsContent>
+</Tabs>
+
+<h3 className="text-xl font-semibold mt-8 mb-4">Installation</h3>
+
+---
+
+<h4 className="text-base font-semibold mt-4 mb-6">
+  Copy and paste the following code into your project.
+</h4>
+
+<ComponentSource source="/components/vibrant/cards-accordion.tsx" />
