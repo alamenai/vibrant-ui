@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // Position options for the card
 export const POSITIONS = {
   TOP: "top",
@@ -44,7 +46,7 @@ type CardStyle = {
   position: React.CSSProperties["position"]
   top: string | number
   left: string | number
-  visibility: 'visible' | 'hidden' | 'collapse' | undefined
+  visibility: "visible" | "hidden" | "collapse" | undefined
   zIndex?: number
 }
 
