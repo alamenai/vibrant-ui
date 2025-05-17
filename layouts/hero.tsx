@@ -7,12 +7,12 @@ export const Hero = () => {
   return (
     <div className="mt-8 flex flex-col items-center">
       <Link
-        href={"/docs/components/cards-accordion"}
+        href={"/docs/components/onboarding-tour"}
         className="relative p-[2px] rounded-full bg-gradient-to-r from-violet-600 via-purple-500 to-rose-500 animate-[borderFlow_3s_linear_infinite]"
       >
         <div className="flex items-center rounded-full px-3 py-1 text-xs font-bold text-white">
           <FlaskConical size={18} className="mr-2" />
-          Introducing Cards Accordion
+          Introducing Onboarding Tour
           <ArrowRight className="ml-2" size={16} />
         </div>
       </Link>

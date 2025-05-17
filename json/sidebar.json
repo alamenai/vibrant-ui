@@ -45,6 +45,12 @@
         "label": "Cards Accordion",
         "link": "/docs/components/cards-accordion",
         "isExperimental": true
+      },
+      {
+        "id": 7,
+        "label": "Onboarding Tour",
+        "link": "/docs/components/onboarding-tour",
+        "isExperimental": true
       }
     ]
   }
